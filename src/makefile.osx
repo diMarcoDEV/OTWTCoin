@@ -103,7 +103,7 @@ else
 endif
 endif
 
-all: otwtcoin
+all: otwtcoind
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -128,7 +128,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-otwtcoin: $(OBJS:obj/%=obj/%)
+otwtcoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))

@@ -2,7 +2,7 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-USE_UPNP:=0
+USE_UPNP:=-
 
 DEFS=-DUSE_IPV6 -DBOOST_SPIRIT_THREADSAFE
 
@@ -120,7 +120,7 @@ OBJS= \
     obj/noui.o
 
 
-all: otwtcoin
+all: otwtcoind
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -141,7 +141,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-otwtcoin: $(OBJS:obj/%=obj/%)
+otwtcoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
